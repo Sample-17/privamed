@@ -2540,12 +2540,24 @@ select.erreur {
 .texte .bouton1 {
   border-radius: 30px;
   color: #fff;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   padding: 12px 30px;
   vertical-align: middle;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+@media only screen and (min-width: 64em) {
+
+  .bouton3,
+  .texte .bouton3,
+  .bouton2,
+  .texte .bouton2,
+  .bouton1,
+  .texte .bouton1 {
+    font-size: 15px;
+  }
 }
 
 .bouton3:hover,
