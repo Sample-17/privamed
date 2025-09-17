@@ -1,9 +1,9 @@
-name: Deploy subfolder to GitHub Pages
+name: Deploy whole repo to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # запускається при пуші в main
-  workflow_dispatch:    # дозволяє вручну запускати в Actions
+    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,11 +21,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Завантажуємо підпапку fr як сайт
-      - name: Upload artifact (fr/)
+      # Upload the WHOLE repo, including the fr/ folder
+      - name: Upload artifact (.)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: fr
+          path: .
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
