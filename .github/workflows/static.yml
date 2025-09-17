@@ -1,0 +1,31 @@
+name: Deploy subfolder to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]  # запускається при пуші в main
+  workflow_dispatch:    # дозволяє вручну запускати в Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Завантажуємо підпапку fr як сайт
+      - name: Upload artifact (fr/)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: fr
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
